@@ -2,8 +2,19 @@ from torch import nn
 import torch.nn.functional as F
 import torch
 
+class MNIST2NN(nn.Module):
+    def __init__(self):
+        super(self).__init__()
 
-class Net(nn.Module):
+        self.fc1 = nn.Linear(28 * 28, 200)
+        self.fc2 = nn.Linear(200, 10)
+
+    def forward(self, x):
+        x = F.relu(self.fc1(x))
+        output = F.relu(self.fc2(x))
+        return output
+
+class CNN(nn.Module):
     def __init__(self):
         super(self).__init__()
 
